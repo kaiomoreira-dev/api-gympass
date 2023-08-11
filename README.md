@@ -1,4 +1,4 @@
-<h2 style="text-align='center'>Api GymPass </h2>
+<h2 style="text-align:center">Api GymPass </h2>
 
 ## RFs (Requisitos funcionais)
  * [x] Deve ser possível se cadastrar;
