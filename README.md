@@ -1,4 +1,4 @@
-<span  style="text-align: center;"><h2>Api GymPass </h2></span>
+<span style="text-align: center; display: inline;"><h2>Api GymPass </h2></span>
 
 
 ## RFs (Requisitos funcionais)
