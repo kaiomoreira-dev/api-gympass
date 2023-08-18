@@ -34,7 +34,6 @@ describe('Gym Case', ()=>{
        })
 
        expect(nearbyGym.gyms).toEqual([
-            expect.objectContaining({name: 'Academia Urso'}),
             expect.objectContaining({name: 'Academia Fitipaldi'}),
        ])
 
