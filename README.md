@@ -1,5 +1,6 @@
 <span style="text-align: center; display: inline;"><h2>Api GymPass </h2></span>
 
+## Intro
 
 ## RFs (Requisitos funcionais)
  * [x] Deve ser possível se cadastrar;
