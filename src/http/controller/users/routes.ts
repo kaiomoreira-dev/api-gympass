@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { AuthenticateUserController } from './authenticate/authenticate-users-controller'
+import { AuthenticateUserController } from './login/authenticate-users-controller'
 import { veridyJWT } from '../../middlewares/verify-jwt'
 import { RegisterUserController } from './register/register-user-controller'
 import { GetProfileUserController } from './get-profile/get-profile.users-controller'

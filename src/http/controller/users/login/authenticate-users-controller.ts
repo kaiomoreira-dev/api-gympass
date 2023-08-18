@@ -1,7 +1,7 @@
 import { InvalidUsersCredentialsError } from '@/usecases/errors/invalid-users-credentials'
 import { makeAuthenticateUser } from '@/usecases/factories/make-authenticate-user-usecase'
 
-import fastify, { FastifyReply, FastifyRequest } from 'fastify'
+import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function AuthenticateUserController (request: FastifyRequest, reply:FastifyReply){
@@ -12,8 +12,6 @@ export async function AuthenticateUserController (request: FastifyRequest, reply
             })
       
             const { email, password } = userSchema.parse(request.body)
-
-            
             
             const authenticateUser = await makeAuthenticateUser()
             
@@ -28,8 +26,7 @@ export async function AuthenticateUserController (request: FastifyRequest, reply
                   sub: user.id,
                 }
               }
-            ) 
-
+            )               
             const refreshToken = await reply.jwtSign(
               {
                 role: user.role

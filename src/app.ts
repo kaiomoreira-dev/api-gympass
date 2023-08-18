@@ -27,7 +27,7 @@ fastifyApp.register(fastifyJwt,
             expiresIn: '10m'
         },
         
-    })
+})
 
 fastifyApp.register(fastifyCookie)
 

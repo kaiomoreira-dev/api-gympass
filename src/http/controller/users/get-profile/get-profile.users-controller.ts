@@ -1,10 +1,8 @@
 import { InvalidUsersCredentialsError } from '@/usecases/errors/invalid-users-credentials'
 import { ResourceNotFoundError } from '@/usecases/errors/resource-not-found-error'
-import { makeAuthenticateUser } from '@/usecases/factories/make-authenticate-user-usecase'
 import { makeGetProfileUser } from '@/usecases/factories/make-get-profiler-user-usecase'
 
-import fastify, { FastifyReply, FastifyRequest } from 'fastify'
-import { z } from 'zod'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function GetProfileUserController (request: FastifyRequest, reply:FastifyReply){
         try {

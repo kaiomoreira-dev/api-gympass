@@ -1,6 +1,5 @@
 import { randomUUID } from 'node:crypto'
 import 'dotenv/config'
-
 import type { Environment } from 'vitest'
 import { execSync } from 'node:child_process'
 import { prisma } from '@/lib/prisma'
