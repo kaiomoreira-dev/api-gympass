@@ -11,7 +11,7 @@ interface IResponseSearchNearbyGym{
     gyms: Gym[],
 }
 
-export class SerachNearbyGymUseCase {
+export class SearchNearbyGymUseCase {
   constructor(private gymRepository: IGymsRepository) {}
 
   async execute({

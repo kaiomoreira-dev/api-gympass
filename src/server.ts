@@ -1,6 +1,6 @@
-import { appFastify } from './app'
+import { fastifyApp } from './app'
 
-appFastify.listen(
+fastifyApp.listen(
   {
     host: '0.0.0.0',
     port: 3333,

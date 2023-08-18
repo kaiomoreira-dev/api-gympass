@@ -1,24 +1,50 @@
 import fastify, { FastifyError, FastifyReply, FastifyRequest } from 'fastify'
-import { usersRoutes } from './http/routes'
+import { usersRoutes } from './http/controller/users/routes'
 import { ZodError } from 'zod'
 import { env } from './env'
 import fastifyJwt from '@fastify/jwt'
 import "dotenv/config"
+import { gymsRoutes } from './http/controller/gyms/routes'
+import { checkInRoutes } from './http/controller/check-ins/routes'
+import fastifyCookie from '@fastify/cookie'
+import fastifyCors from '@fastify/cors'
 
-export const appFastify = fastify()
+export const fastifyApp = fastify()
 
-appFastify.register(fastifyJwt,
+fastifyApp.register(fastifyCors, {
+    origin: true,
+    credentials: true,
+  })
+  
+fastifyApp.register(fastifyJwt,
     {
-        secret: env.JWT_SECRET
+        secret: env.JWT_SECRET,
+        cookie:{
+            cookieName: 'refreshToken',
+            signed: false
+        },
+        sign:{
+            expiresIn: '10m'
+        },
+        
     })
 
+fastifyApp.register(fastifyCookie)
 
-appFastify.register(usersRoutes,{
+fastifyApp.register(usersRoutes,{
     prefix: 'api/users'
 })
 
+fastifyApp.register(gymsRoutes,{
+    prefix: 'api/gyms'
+})
 
-appFastify.setErrorHandler((error:FastifyError, _request:FastifyRequest, reply: FastifyReply)=>{
+fastifyApp.register(checkInRoutes,{
+    prefix: 'api/check-ins'
+})
+
+
+fastifyApp.setErrorHandler((error:FastifyError, _request:FastifyRequest, reply: FastifyReply)=>{
     if(error instanceof ZodError){
         return reply.status(400).send({message: 'Validation error', issues: error.format()})
     }

@@ -1,6 +1,6 @@
 import {afterEach, beforeEach, describe, expect,test, vi} from 'vitest'
 import { faker } from '@faker-js/faker'
-import { MakeCheckInUseCase } from './make-check-in-users-usecase';
+import { MakeCheckInUseCase } from './make-check-in-usecase';
 import { InMemoryRespositoryCheckIn } from '@/repositories/in-memory/in-memory-check-in-repository';
 import { InMemoryGymRespository } from '@/repositories/in-memory/in-memory-gym-repository';
 import { MaxOfNumberCheckInError } from '@/usecases/errors/max-of-number-check-in-error';

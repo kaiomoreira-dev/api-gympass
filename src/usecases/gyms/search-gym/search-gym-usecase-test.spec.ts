@@ -1,14 +1,14 @@
 import {beforeEach, describe, expect,test} from 'vitest'
-import { SerachGymUseCase} from './search-gym-usecase';
+import { SearchGymUseCase} from './search-gym-usecase';
 import { InMemoryGymRespository } from '@/repositories/in-memory/in-memory-gym-repository';
 
 let inMemoryGymRepository: InMemoryGymRespository;
-let stu: SerachGymUseCase;
+let stu: SearchGymUseCase;
 
 describe('List CheckIn Case', ()=>{
     beforeEach(()=>{
         inMemoryGymRepository = new InMemoryGymRespository()
-         stu = new SerachGymUseCase(inMemoryGymRepository)
+         stu = new SearchGymUseCase(inMemoryGymRepository)
     })
 
     test('should be able to search a gym', async()=>{

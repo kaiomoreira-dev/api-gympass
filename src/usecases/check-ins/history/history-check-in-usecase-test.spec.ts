@@ -1,5 +1,5 @@
 import {beforeEach, describe, expect,test} from 'vitest'
-import { ListCheckInUseCase} from './list-gym-usecase';
+import { ListCheckInUseCase} from './history-check-in-usecase';
 import { InMemoryRespositoryCheckIn } from '@/repositories/in-memory/in-memory-check-in-repository';
 import { faker } from '@faker-js/faker';
 import { InMemoryGymRespository } from '@/repositories/in-memory/in-memory-gym-repository';

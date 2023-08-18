@@ -32,7 +32,7 @@ export class InMemoryRespositoryCheckIn implements ICheckInRepository{
        return listCheckIns
     }
 
-   async findManyGymByUserId(idUser: string, page: number) {
+   async findManyByUserId(idUser: string, page: number) {
        const listCheckIns = this.checkIns
        .filter((checkIn)=> checkIn.userId === idUser )
        .slice((page - 1) *20, page * 20)

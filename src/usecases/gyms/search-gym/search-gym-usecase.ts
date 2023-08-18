@@ -11,7 +11,7 @@ interface IResponseSearchGym{
     gym: Gym[],
 }
 
-export class SerachGymUseCase {
+export class SearchGymUseCase {
   constructor(private gymRepository: IGymsRepository) {}
 
   async execute({

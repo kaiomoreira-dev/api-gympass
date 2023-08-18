@@ -18,7 +18,8 @@ export class ListCheckInUseCase {
     idUser,
     page
 }: IRequestGym): Promise<IResponseGym> {
-    const listCheckIns = await this.checkInRepository.findManyGymByUserId(idUser, page)
+
+    const listCheckIns = await this.checkInRepository.findManyByUserId(idUser, page)
 
     return {
         checkIns: listCheckIns

@@ -1,25 +1,17 @@
 import {beforeEach, describe, expect,test} from 'vitest'
 import { InMemoryGymRespository } from '@/repositories/in-memory/in-memory-gym-repository';
-import { SerachNearbyGymUseCase } from './search-nearby-gym-usecase';
+import { SearchNearbyGymUseCase } from './search-nearby-gym-usecase';
 
 let inMemoryGymRepository: InMemoryGymRespository;
-let stu: SerachNearbyGymUseCase;
+let stu: SearchNearbyGymUseCase;
 
 describe('Gym Case', ()=>{
     beforeEach(()=>{
         inMemoryGymRepository = new InMemoryGymRespository()
-         stu = new SerachNearbyGymUseCase(inMemoryGymRepository)
+         stu = new SearchNearbyGymUseCase(inMemoryGymRepository)
     })
 
     test('should be able to search nearby gym', async()=>{
-       await inMemoryGymRepository.create({
-        name: 'Academia Urso',
-        description: 'musculação, lutas e ginastica',
-        phone: '77-77777-7777',
-        latitude: 21.6205915,
-        longitude: 49.8004086
-       })
-
        await inMemoryGymRepository.create({
         name: 'Academia Fitipaldi',
         description: 'musculação e ginastica',

@@ -11,44 +11,44 @@ export class PrismaCheckInRepository implements ICheckInRepository {
 
     return checkIn
   }
-  async findManyGymByUserId(idUser: string, page: number){
-    const gyms = await prisma.checkIn.findMany({
-      where:{id: idUser},
+  async findManyByUserId(idUser: string, page: number){
+    const checkIns = await prisma.checkIn.findMany({
+      where:{userId: idUser},
       take: 20,
       skip: (page - 1) * 20
     })
 
-    return gyms
+    return checkIns
   }
 
   async countByUserId(idUser: string){
-    const countGyms = await prisma.checkIn.count({
-      where: {id: idUser}
+    const countCheckIn = await prisma.checkIn.count({
+      where: {userId: idUser}
     })
 
-    return countGyms
+    return countCheckIn
   }
 
   async save(checkIn: CheckIn){
-    const gym = await prisma.checkIn.update({
+    const updatedCheckIn = await prisma.checkIn.update({
       where:{id: checkIn.id},
       data: checkIn
     })
 
-    return gym
+    return updatedCheckIn
   }
   async findByUserIdAndDate(idUsers: string, data: Date){
     const startOfDay = dayjs(data).startOf('date')
     const endOfDay = dayjs(data).endOf('date')
     
-    const user = await prisma.checkIn.findFirst({
+    const checkIn = await prisma.checkIn.findFirst({
       where:{ id: idUsers, createdAt:{
         gte: startOfDay.toDate(),
         lte: endOfDay.toDate()
       }},
     })
 
-    return user
+    return checkIn
   }
   
   async create(data: Prisma.CheckInUncheckedCreateInput){

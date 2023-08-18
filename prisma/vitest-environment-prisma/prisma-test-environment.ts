@@ -14,30 +14,27 @@ function generateDataBaseUrl(schema:string){
 
     url.searchParams.set('schema', schema)
 
-    console.log(url);
-
     return url.toString()
 }
 export default <Environment>{
     name: 'prisma',
     transformMode: 'ssr',
     async setup() {
-        console.log('SETUP on. . .')
        const schema = randomUUID()
 
        const url = generateDataBaseUrl(schema)
 
        process.env.DATABASE_URL = url;
 
-       execSync('npx run migrate deploy')
+       execSync('npx prisma migrate deploy')
 
         return {
             async teardown() {
-            //    await prisma.$executeRawUnsafe(`
-            //     DROP SCHEMA IF EXISTS "${schema}" CASCADE
-            //     `)
+               await prisma.$executeRawUnsafe(`
+                DROP SCHEMA IF EXISTS "${schema}" CASCADE
+                `)
 
-            //     await prisma.$disconnect()
+                await prisma.$disconnect()
             }
         };
     },

@@ -20,14 +20,35 @@ export async function AuthenticateUserController (request: FastifyRequest, reply
             const {user} = await authenticateUser.execute({email, password})
             
             const token = await reply.jwtSign(
-              {},
+              {
+                role: user.role
+              },
               {
                 sign: {
-                  sub: user.id
+                  sub: user.id,
                 }
               }
             ) 
-            return reply.status(200).send({token})
+
+            const refreshToken = await reply.jwtSign(
+              {
+                role: user.role
+              },
+              {
+                sign: {
+                  sub: user.id,
+                  expiresIn: '7d'
+                  
+                }
+              }
+            ) 
+            
+            return reply.setCookie('refreshToken', refreshToken,{
+              httpOnly:true,
+              sameSite: true,
+              path: '/',
+              secure: true
+            }).status(200).send({token})
             
           } catch (error) {
             if(error instanceof  InvalidUsersCredentialsError){
