@@ -26,3 +26,6 @@
  * [x] Os dados da aplicação precisam estar persistidos em um banco PostgreSQL;
  * [x] Todas listas de dados precisam estar paginadas com 20 itens por página;
  * [x] O usuário deve ser identificado por um JWT (JSON Web Token);
+
+# Owner
+[<img src="https://avatars.githubusercontent.com/u/56137536?s=400&u=a74073f1d0f605815a4f343436c791ab7b7dc184&v=4" width=115><br><sub>Kaio Moreira</sub>](https://github.com/kaiomoreira-dev)
