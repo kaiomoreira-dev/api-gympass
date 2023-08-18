@@ -2,6 +2,8 @@
 
 ## Intro
 
+## Description
+
 ## RFs (Requisitos funcionais)
  * [x] Deve ser possível se cadastrar;
  * [x] Deve ser possível se autenticar;
